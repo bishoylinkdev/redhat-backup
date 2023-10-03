@@ -8,12 +8,11 @@ spec:
     adminUser: admin
     adminPassword: admin
     startupStrategy:
-      strategyName: ControllerBasedStartupStrategy
+      strategyName: OpenShiftStartupStrategy
   auth:
     sso:
       url: 'https://keycloak-keycloak.apps.moss.eastus.aroapp.io/auth'
       realm: moss
-      disableSSLCertValidation: true
   objects:
     console:
       storageClassName: managed-csi

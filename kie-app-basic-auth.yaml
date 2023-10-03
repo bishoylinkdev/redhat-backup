@@ -14,7 +14,7 @@ spec:
     console:
       storageClassName: managed-csi
     servers:
-      - id: demo-rhpam-kieserver
+      - id: demo-rhpam-basic-kieserver
         name: demo-rhpam-kieserver
         database:
           storageClassName: managed-csi
