@@ -1,0 +1,21 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: demo-rhpam-basic
+spec:
+  environment: rhpam-trial
+  commonConfig:
+    adminUser: admin
+    adminPassword: admin
+    startupStrategy:
+      strategyName: OpenShiftStartupStrategy
+    dbPassword: admin
+  objects:
+    console:
+      storageClassName: managed-csi
+    servers:
+      - id: demo-rhpam-kieserver
+        name: demo-rhpam-kieserver
+        database:
+          storageClassName: managed-csi
+          type: postgresql
