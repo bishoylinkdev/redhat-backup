@@ -1,0 +1,5 @@
+https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.13/html-single/deploying_red_hat_process_automation_manager_on_red_hat_openshift_container_platform/index
+
+https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.10/html/deploying_red_hat_process_automation_manager_on_red_hat_openshift_container_platform/operator-con_openshift-operator
+
+https://access.redhat.com/solutions/4940331
