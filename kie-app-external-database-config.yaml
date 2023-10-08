@@ -1,0 +1,42 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: demo-rhpam
+spec:
+  environment: rhpam-authoring
+  commonConfig:
+    adminUser: admin
+    adminPassword: admin
+    startupStrategy:
+      strategyName: OpenShiftStartupStrategy
+  auth:
+    sso:
+      url: 'https://keycloak-keycloak.apps.moss.eastus.aroapp.io/auth'
+      realm: moss
+  objects:
+    console:
+      storageClassName: managed-csi
+      routeHostname: 'https://demo-rhpam-rhpamcentr-bam-ns.apps.moss.eastus.aroapp.io'
+      ssoClient:
+        name: rhpam-console-client
+        secret: Ekyze1lXYpO1IDT3gY2wxV5QwSR0ZRDR
+        hostnameHTTPS: 'https://keycloak-keycloak.apps.moss.eastus.aroapp.io/auth'
+    servers:
+      - id: server1
+        name: demo-rhpam-kieserver
+        routeHostname: 'https://demo-rhpam-kieserver-bam-ns.apps.moss.eastus.aroapp.io'
+        ssoClient:
+          name: rhpam-server-client
+          secret: BvNyIFrl3OrmExFDgimj2DB15a4UPBhp
+          hostnameHTTPS: 'https://keycloak-keycloak.apps.moss.eastus.aroapp.io/auth'
+        database:
+          storageClassName: managed-csi
+          type: external
+          externalConfig:
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+            driver: postgresql
+            password: 'pam'
+            username: pam
+            port: '5432'
+            host: hippo-primary.postgres-operator.svc
+            name: pamengine
