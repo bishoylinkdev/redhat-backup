@@ -1,0 +1,21 @@
+# Add source and match tags in collector configmap under section fluent.conf: |-
+
+# Kafka logs source
+
+<source>
+@type kafka
+brokers my-cluster-kafka-bootstrap.amq-streams-kafka.svc:9092
+topics SOURCE_A
+format json
+</source>
+
+<match SOURCE_A>
+    @type elasticsearch
+    host elasticsearch
+    port 9200
+    scheme https
+    ssl_version TLSv1_2
+    client_key '/var/run/ocp-collector/secrets/collector/tls.key'
+    client_cert '/var/run/ocp-collector/secrets/collector/tls.crt'
+    ca_file '/var/run/ocp-collector/secrets/collector/ca-bundle.crt'
+</match>
