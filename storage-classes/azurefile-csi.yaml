@@ -1,0 +1,42 @@
+provisioner: file.csi.azure.com
+mountOptions:
+  - mfsymlinks
+  - cache=strict
+  - nosharesock
+  - actimeo=30
+parameters:
+  skuName: Standard_LRS
+volumeBindingMode: Immediate
+metadata:
+  name: azurefile-csi
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'false'
+  managedFields:
+    - manager: azure-file-csi-driver-operator
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-16T23:13:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:allowVolumeExpansion': {}
+        'f:mountOptions': {}
+        'f:parameters':
+          .: {}
+          'f:skuName': {}
+        'f:provisioner': {}
+        'f:reclaimPolicy': {}
+        'f:volumeBindingMode': {}
+    - manager: kubectl-patch
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-21T11:43:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:storageclass.kubernetes.io/is-default-class': {}
+kind: StorageClass
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1

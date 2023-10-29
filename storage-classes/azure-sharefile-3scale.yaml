@@ -1,0 +1,33 @@
+provisioner: file.csi.azure.com
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - mfsymlinks
+  - cache=strict
+  - nosharesock
+  - actimeo=30
+  - noperm
+parameters:
+  skuName: Premium_LRS
+volumeBindingMode: Immediate
+metadata:
+  name: azure-sharefile-3scale
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-20T22:46:16Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:allowVolumeExpansion': {}
+        'f:mountOptions': {}
+        'f:parameters':
+          .: {}
+          'f:skuName': {}
+        'f:provisioner': {}
+        'f:reclaimPolicy': {}
+        'f:volumeBindingMode': {}
+kind: StorageClass
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1

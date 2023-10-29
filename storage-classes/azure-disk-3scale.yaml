@@ -1,0 +1,25 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azure-disk-3scale
+  annotations:
+    description: azure RWO for 3 svc 3scale
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-20T12:20:13Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:allowVolumeExpansion': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:description': {}
+        'f:provisioner': {}
+        'f:reclaimPolicy': {}
+        'f:volumeBindingMode': {}
+provisioner: disk.csi.azure.com
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: Immediate

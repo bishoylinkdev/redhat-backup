@@ -1,0 +1,37 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: managed-csi
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'true'
+  managedFields:
+    - manager: azure-disk-csi-driver-operator
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-16T23:12:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:allowVolumeExpansion': {}
+        'f:metadata':
+          'f:annotations': {}
+        'f:parameters':
+          .: {}
+          'f:skuname': {}
+        'f:provisioner': {}
+        'f:reclaimPolicy': {}
+        'f:volumeBindingMode': {}
+    - manager: kubectl-patch
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2023-09-21T11:42:51Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:storageclass.kubernetes.io/is-default-class': {}
+provisioner: disk.csi.azure.com
+parameters:
+  skuname: Premium_LRS
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
